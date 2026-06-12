@@ -1,0 +1,1 @@
+export { mockParts } from './parts'

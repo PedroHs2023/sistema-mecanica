@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ── Light mode (default) ─────────────────────────── */
+  :root {
+    --bg:            #F5F6FA;
+    --sidebar:       #FFFFFF;
+    --topbar:        #FFFFFF;
+    --card:          #FFFFFF;
+    --surface:       #F7F8FA;
+    --card-hover:    #F1F3F6;
+    --border:        #E5E7EB;
+    --border-strong: #D1D5DB;
+    --text:          #111827;
+    --text-secondary:#6B7280;
+    --text-muted:    #9CA3AF;
+    --accent:        #F97316;
+    --accent-hover:  #EA580C;
+    --shadow-card:   0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-hover:  0 4px 12px rgba(0,0,0,0.10);
+    --scrollbar:     rgba(0,0,0,0.12);
+    --scrollbar-hover: rgba(0,0,0,0.22);
+  }
+
+  /* ── Dark mode ────────────────────────────────────── */
+  .dark {
+    --bg:            #090909;
+    --sidebar:       #0F0F12;
+    --topbar:        #0A0A0D;
+    --card:          #141417;
+    --surface:       #0F0F12;
+    --card-hover:    #1C1E24;
+    --border:        rgba(255,255,255,0.07);
+    --border-strong: rgba(255,255,255,0.12);
+    --text:          #ECECED;
+    --text-secondary:#9898A0;
+    --text-muted:    #606068;
+    --accent:        #F97316;
+    --accent-hover:  #EA580C;
+    --shadow-card:   none;
+    --shadow-hover:  0 4px 16px rgba(0,0,0,0.5);
+    --scrollbar:     rgba(255,255,255,0.08);
+    --scrollbar-hover: rgba(255,255,255,0.16);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'cv02','cv03','cv04','cv11';
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-hover); }
+  ::-webkit-scrollbar-corner { background: transparent; }
+
+  /* Select options */
+  select option {
+    background-color: var(--card);
+    color: var(--text);
+  }
+}
+
+@layer components {
+  /* ── Kanban board scroll container ─────────────────
+     Hide the thick native scrollbar on the kanban
+     horizontal scroll area and replace with the thin one. */
+  .kanban-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar) transparent;
+  }
+}

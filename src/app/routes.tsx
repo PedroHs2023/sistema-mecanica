@@ -1,0 +1,50 @@
+import { createBrowserRouter, Navigate } from 'react-router-dom'
+import { UserCog, Settings } from 'lucide-react'
+import { AppShell } from '../components/layout/AppShell'
+import { DashboardPage } from '../features/dashboard/DashboardPage'
+import { ServiceOrdersPage } from '../features/service-orders/ServiceOrdersPage'
+import { ServiceOrderDetailPage } from '../features/service-orders/ServiceOrderDetailPage'
+import { CustomersPage } from '../features/customers/CustomersPage'
+import { VehiclesPage } from '../features/vehicles/VehiclesPage'
+import { InventoryPage } from '../features/inventory/InventoryPage'
+import { PartsPage } from '../features/parts/PartsPage'
+import { SuppliersPage } from '../features/suppliers/SuppliersPage'
+import { PurchasesPage } from '../features/purchases/PurchasesPage'
+import { ImportPage } from '../features/import/ImportPage'
+import { SchedulePage } from '../features/schedule/SchedulePage'
+import { FinancePage } from '../features/finance/FinancePage'
+import { BillingPage } from '../features/billing/BillingPage'
+import { ReportsPage } from '../features/reports/ReportsPage'
+import { PlaceholderPage } from '../components/ui/PlaceholderPage'
+
+export const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <AppShell />,
+    children: [
+      { index: true, element: <Navigate to="/dashboard" replace /> },
+      { path: 'dashboard',          element: <DashboardPage /> },
+      { path: 'ordens-servico',     element: <ServiceOrdersPage /> },
+      { path: 'ordens-servico/:id', element: <ServiceOrderDetailPage /> },
+      { path: 'clientes',           element: <CustomersPage /> },
+      { path: 'veiculos',           element: <VehiclesPage /> },
+      { path: 'agenda',        element: <SchedulePage /> },
+      { path: 'estoque',       element: <InventoryPage /> },
+      { path: 'pecas',         element: <PartsPage /> },
+      { path: 'fornecedores',  element: <SuppliersPage /> },
+      { path: 'compras',          element: <PurchasesPage /> },
+      { path: 'estoque/importar', element: <ImportPage /> },
+      { path: 'financeiro',    element: <FinancePage /> },
+      { path: 'faturamento',   element: <BillingPage /> },
+      { path: 'relatorios',    element: <ReportsPage /> },
+      {
+        path: 'usuarios',
+        element: <PlaceholderPage title="Usuários" subtitle="Gerenciamento de acesso." icon={<UserCog size={24} />} />,
+      },
+      {
+        path: 'configuracoes',
+        element: <PlaceholderPage title="Configurações" subtitle="Personalização do sistema." icon={<Settings size={24} />} />,
+      },
+    ],
+  },
+])
