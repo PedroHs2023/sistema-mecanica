@@ -56,6 +56,7 @@ public class AuthService {
                 user.getRole().name(), company.getId(), company.getName());
     }
 
+    @Transactional(readOnly = true)
     public AuthResponse login(LoginRequest request) {
         User user = userRepository.findByEmail(request.email())
                 .orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado"));
