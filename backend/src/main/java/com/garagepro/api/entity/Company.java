@@ -42,6 +42,43 @@ public class Company {
     @Column(nullable = false)
     @Builder.Default
     private Boolean active = true;
+    
+    @Column(length = 20)
+    private String ie;
+
+    @Column(length = 20)
+    private String im;
+
+    @Column(length = 10)
+    private String cnae;
+
+    @Column(nullable = false)
+    @Builder.Default
+    private Integer crt = 1;
+
+    @Column(length = 2)
+    private String uf;
+
+    @Column(name = "nfe_serie")
+    @Builder.Default
+    private Integer nfeSerie = 1;
+
+    @Column(name = "nfe_ultimo_numero")
+    @Builder.Default
+    private Integer nfeUltimoNumero = 0;
+
+    @Column(name = "nfe_ambiente")
+    @Builder.Default
+    private Integer nfeAmbiente = 2;
+
+    @Column(name = "certificate", columnDefinition = "LONGBLOB")
+    private byte[] certificate;
+
+    @Column(name = "certificate_password", length = 255)
+    private String certificatePassword;
+
+    @Column(name = "certificate_expiry")
+    private LocalDateTime certificateExpiry;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)

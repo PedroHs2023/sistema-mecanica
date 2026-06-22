@@ -1,0 +1,12 @@
+ALTER TABLE companies
+    ADD COLUMN ie VARCHAR(20),
+    ADD COLUMN im VARCHAR(20),
+    ADD COLUMN cnae VARCHAR(10),
+    ADD COLUMN crt INT NOT NULL DEFAULT 1,
+    ADD COLUMN uf VARCHAR(2),
+    ADD COLUMN nfe_serie INT NOT NULL DEFAULT 1,
+    ADD COLUMN nfe_ultimo_numero INT NOT NULL DEFAULT 0,
+    ADD COLUMN nfe_ambiente INT NOT NULL DEFAULT 2,
+    ADD COLUMN certificate LONGBLOB,
+    ADD COLUMN certificate_password VARCHAR(255),
+    ADD COLUMN certificate_expiry DATETIME;

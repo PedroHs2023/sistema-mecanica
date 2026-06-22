@@ -1,5 +1,5 @@
 package com.garagepro.api.entity;
-
+import com.garagepro.api.entity.enums.PaymentStatus;
 import com.garagepro.api.entity.enums.ServiceOrderStatus;
 import jakarta.persistence.*;
 import lombok.*;
@@ -15,7 +15,7 @@ import java.util.List;
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class ServiceOrder {
     
-        @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -58,6 +58,11 @@ public class ServiceOrder {
 
     @Column(name = "closed_at")
     private LocalDateTime closedAt;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "payment_status", nullable = false, length = 20)
+    @Builder.Default
+    private PaymentStatus paymentStatus = PaymentStatus.PENDENTE;
 
     @OneToMany(mappedBy = "serviceOrder", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
